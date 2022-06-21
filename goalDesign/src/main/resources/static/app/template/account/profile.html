@@ -1,0 +1,48 @@
+<section>
+	<div class="container p-5">
+		<div class="row">
+			<div class="col-lg-5 mx-auto">
+				<div class="p-5 bg-white shadow rounded-lg text-center">
+					<div class="card text-center bg-light">
+						<div class="card-header bg-white text-light">
+							<div class="row col-12">
+								<div class="col-11 ps-5">
+									<img id="newImage" style="cursor: pointer"
+										class="d-block mx-auto mb-4 rounded-pill rounded-circle"			
+										ngf-select="onload($file)"
+										data-ng-src="data:image/png;base64, {{account.image}}"
+										src="" alt="profile image" alt="" width="200" height="200">
+									<span class="text-secondary">Click on the picture to
+										upload</span>
+								</div>
+								<div class="col-1">
+									<label for="deleteImage" ng-click="delete()"
+										class="file-upload btn btn-secondary btn-block rounded-pill shadow text-white">
+										<i class="fas fa-trash-alt"></i>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<h5 class="text-center mb-2 mt-2 text-muted">Customize your
+								profile</h5>
+								<a class="text-danger select" ng-click="removeAccount()">Remove Account</a>
+						</div>
+						<div class="card-footer bg-secondary text-light">
+							<div class="mt-2 mb-2">
+								<button class="btn btn-danger rounded-pill" ng-click="cancel()">
+									<i class="fa-solid fa-xmark"></i> Cancel
+								</button>
+								<button class="btn btn-success rounded-pill" ng-click="save()">
+									<i class="fa-solid fa-floppy-disk"></i> Save
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+

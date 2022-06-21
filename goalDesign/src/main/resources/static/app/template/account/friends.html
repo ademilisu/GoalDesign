@@ -1,0 +1,118 @@
+<section class="vh-75">
+	<div class="container py-5 h-100 shadow text-center">
+		<div class="row d-flex justify-content-center align-items-center">
+			<div class="col-3 bg-white" style="height: 500px;">
+				<div class="row d-flex">
+					<div class="input-group rounded ps-2 ms-2">
+						<input type="search" id="searchItem" class="form-control rounded"
+							placeholder="Search Accounts" aria-label="Search"
+							aria-describedby="search-addon" ng-model="userInfo.username"
+							autocomplete="off" />
+						<button class="btn btn-secondary" id="myButton"
+							ng-click="searchAccount()">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</div>
+					<div class="table-responsive text-center" ng-show="search"
+						style="height: 450px;">
+						<h4 class="mt-3 text-secondary">Accounts</h4>
+						<table class="table table-borderless table-hover">
+							<tbody>
+								<tr ng-repeat="account in accounts | filter: userInfo.username">
+									<td><img class="img-lg rounded-circle imghand"
+										data-ng-src="data:image/png;base64, {{account.image}}"
+										data-ng-error="/app/img/account.png" alt="profile image"
+										style="width: 30px;" ng-click="goToAccount(account)"></td>
+									<td ng-click="goToAccount(account)">{{account.username}}</td>
+									<td>
+										<button class="btn text-secondary"
+											ng-click="sendRequest(account)">
+											<i class="fa-solid fa-user-plus"></i>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-9 bg-white">
+				<div class="row d-flex">
+					<div class="col-6">
+						<h4 class="mt-3 text-secondary">Friends</h4>
+						<div class="container overflow-auto" style="height: 450px;">
+							<table class="table">
+								<tbody>
+									<tr ng-repeat="account in friends">
+										<td><img class="img-lg rounded-circle imghand"
+											data-ng-src="data:image/png;base64, {{account.image}}"
+											data-ng-error="/app/img/account.png" alt="profile image"
+											style="width: 30px;" ng-click="goToAccount(account)"></td>
+										<td style="cursor: pointer" ng-click="goToAccount(account)">{{account.username}}</td>
+										<td>
+											<button class="btn text-danger"
+												ng-click="deleteFriend(account)">
+												<i class="fas fa-trash-alt"> </i>
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-6 bg-white">
+						<h4 class="mt-3 text-secondary">Requests</h4>
+						<div class="container overflow-auto" style="height: 450px;">
+							<ul class="ulDots text-primary"
+								ng-repeat="request in requests | requestFilter:false">
+								<li><img class="img-lg rounded-circle imghand"
+									data-ng-src="data:image/png;base64, {{request.sender.image}}"
+									data-ng-error="/app/img/account.png" alt="profile image"
+									style="width: 30px;" ng-click="goToAccount(request.sender)">
+									<i class="text-secondary"
+									ng-click="goToAccount(request.sender)">{{request.sender.username}}</i>
+									<i>request to follow you</i>
+									<button class="btn text-success"
+										ng-click="acceptRequest(request)">
+										<i class="fa-solid fa-check"></i>
+									</button>
+									<button class="btn text-danger"
+										ng-click="deleteRequest(request)">
+										<i class="fa-solid fa-xmark"></i>
+									</button></li>
+							</ul>
+							<ul class="ulDots text-danger"
+								ng-repeat="request in requests | requestFilter:true">
+								<li><i>Request send to </i><img
+									class="img-lg rounded-circle imghand"
+									data-ng-src="data:image/png;base64, {{request.receiver.image}}"
+									data-ng-error="/app/img/account.png" alt="profile image"
+									style="width: 30px;" ng-click="goToAccount(request.receiver)">
+									<i class="text-secondary"
+									ng-click="goToAccount(request.receiver)">{{request.receiver.username}}</i>
+									<button class="btn text-danger"
+										ng-click="deleteRequest(request)">
+										<i class="fa-solid fa-xmark"> </i>
+									</button></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script type="text/javascript">
+		var element = document.getElementById('searchItem');
+		var textBox;
+		element.addEventListener('keyup', (event) => {
+			if(event) {
+				textBox = element.value;		
+			}
+			if(textBox.length == 3 || textBox.length == 0) {
+				document.getElementById('myButton').click();
+				textBox = '';
+			}
+		});		
+</script>

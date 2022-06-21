@@ -1,0 +1,40 @@
+<section class="vh-100">
+	<div class="container py-5 h-100">
+		<div class="row d-flex justify-content-center align-items-center h-80">
+			<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+				<div class="card shadow-2-strong" style="border-radius: 1rem;">
+					<div class="card-body p-5 text-center">
+
+						<h3 class="mb-5">Login</h3>
+						<form name="loginForm">
+							<div class="form-outline mb-4">
+								<input type="text" class="form-control form-control-lg"
+									placeholder="Enter your username"
+									ng-model="loginRequest.username" />
+							</div>
+
+							<div class="form-outline mb-4">
+								<input type="password" id="typePasswordX-2"
+									class="form-control form-control-lg"
+									placeholder="Enter your password"
+									ng-model="loginRequest.password" />
+							</div>
+							<div class="alert alert-danger" role="alert" ng-if="error">
+								Username or password is invalid!
+							</div>
+							<button class="btn btn-primary btn-lg btn-block" type="submit"
+								ng-click="login(loginForm)">Login</button>
+							<hr class="my-4">
+						</form>
+						<div>
+							<p class="mb-0">
+								Don't have an account? <a href="/signup"
+									class="text-primary fw-bold">Sign Up</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
