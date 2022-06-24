@@ -5,6 +5,9 @@ app.config(['$routeProvider', '$locationProvider',
 		$locationProvider.html5Mode({ enabled: true });
 
 		$routeProvider
+			.when('/home', {
+				template: '<home></home>'
+			})
 			.when('/profile', {
 				template: '<profile><//profile>'
 			})
